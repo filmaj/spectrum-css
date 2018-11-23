@@ -125,11 +125,13 @@ function renderScale(scale, method, page, anchor) {
   }
   // add load listeners
   const updateOnScaleChange = function() {
-    const anchorEl = document.querySelector('#' + anchor);
-    if (anchorEl) {
-      anchorEl.scrollIntoView();
+    if (anchor) {
+      const anchorEl = document.querySelector('#' + anchor);
+      if (anchorEl) {
+        anchorEl.scrollIntoView();
+      }
+      updateNavSelection(page, anchor);
     }
-    updateNavSelection(page, anchor);
   };
   linkCore.addEventListener('load', updateOnScaleChange);
   linkDiff.addEventListener('load', updateOnScaleChange);
@@ -286,7 +288,7 @@ function render(newState, oldState, recordState) {
     );
   }
   // apply anchor nav after scale so that we take into account resize
-  if (newState.anchor !== oldState.anchor) {
+  if (newState.anchor && newState.anchor !== oldState.anchor) {
     const anchorEl = document.querySelector('#' + newState.anchor);
     if (anchorEl) {
       anchorEl.scrollIntoView();

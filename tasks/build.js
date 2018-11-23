@@ -7,8 +7,7 @@ gulp.task('build',
     'icons',
     'copy-vars',
     'copy-loadIcons',
-    'build-css',
-    'build-docs'
+    'build-css'
   )
 );
 
